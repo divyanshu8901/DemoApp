@@ -21,18 +21,20 @@ class Applicant
 			sc.close();
 		}
 	
-		public void verify()
+		public void verify() throws Exception
 		{
 			if(age < 18)
 			{
 				 
 				NotValidAgeException e = new NotValidAgeException("you are not elegible");
 				System.out.println(e.getMessage());
+				throw e;
 				
 			}else if (age > 60)
 			{
 				NotValidAgeException e = new NotValidAgeException("you are not elegible");
 				System.out.println(e.getMessage());
+				throw e;
 				
 			}else 
 			{
@@ -45,7 +47,7 @@ class Applicant
 
 class RTO
 {
-	public void initiate()
+	public void initiate() throws Exception
 	{
 		Applicant a = new Applicant();
 		a.input();
@@ -60,7 +62,13 @@ public class LaunchRto {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			RTO rt = new RTO();
+			try {
 			rt.initiate();
+			}
+			catch(Exception e1)
+			{
+				
+			}
 	}
 
 }
